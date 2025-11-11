@@ -1,5 +1,5 @@
 -- Carregar a Library
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/wx-sources/RedzLibV4/main/Source.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowHub-Lynix/RedzLibV4/refs/heads/main/Source.lua"))()
 
 -- Funções da Library
 Library:SetTheme("Theme Name") -- Temas: https://raw.githubusercontent.com/REDzHUB/RedzLibV4/main/Themes.lua
