@@ -1,8 +1,5 @@
 # Redz UI Library V4 
 
-Uma biblioteca moderna de UI para Roblox, feita em Lua.  
-Permite criar **painéis, abas, botões, toggles, sliders, dropdowns e muito mais**, com suporte a **temas customizáveis** e **animações fluidas**.
-
 ---
 
 ## 📦 Início Rápido
@@ -19,67 +16,95 @@ local Window = redzlib:MakeWindow({
 })
 
 -- Criar aba
-local Tab = Window:MakeTab({Name = "Tab", Icon = "Home"})
+local Tab = Window:MakeTab({ Name = "Testing", Icon = "Settings"})
 ```
 
 ---
 
 ## 👾 Exemplos de Componentes
+### Icone de minimizar
+```lua
+Window:AddMinimizeButton({
+  Button = {
+    Image = "rbxassetid://15298567397"  -- Troque pelo ID correto da imagem do botão
+  },
+  UICorner = {true, CornerRadius = UDim.new(0.5, 0)},
+  UIStroke = {false, {}}
+})
+```
+### Convite de Discord 
+```lua
+Tab:AddDiscordInvite({
+  DiscordTitle = "Title",
+  DiscordIcon = "rbxassetid://15298567397",  -- Troque pelo ID correto da imagem do ícone
+  DiscordLink = "Link"  -- Link do seu servidor Discord
+})
+```
 
 ### Seção
 ```lua
-local Section = Tab:AddSection({"This is a Section"})
+local Section = Tab:AddSection({"seção"})
 ```
 
 ### Parágrafo
 ```lua
-local Paragraph = Tab:AddParagraph({"Paragraph", "this is a Paragraph"})
+local Paragraph = Tab:AddParagraph({"Tex lo", "parágrafo"})
 ```
 
 ### Botão
 ```lua
 local Button = Tab:AddButton({
-    Name = "Executar",
-    Description = "Clica aqui para rodar",
-    Callback = function()
-        print("Botão clicado!")
-    end
+  Name = "Botão",
+  Callback = function()
+    print("Botão clicado!")
+    Library:MakeNotify({
+      Title = "Alerta!",
+      Text = "Você clicou no botão!",
+      Time = 3
+    })
+  end
 })
 ```
 
 ### Toggle
 ```lua
 local Toggle = Tab:AddToggle({
-    Name = "Ativar Sistema",
-    Default = false,
-    Callback = function(value)
-        print("Toggle:", value)
+  Name = "toggle",
+  Default = false,
+  Callback = function(Value)
+    if Value then
+      print("/fling")
+    else
+      print("F a.")
     end
+  end
 })
 ```
 
 ### Dropdown
 ```lua
 local Dropdown = Tab:AddDropdown({
-    Name = "Escolha uma opção",
-    Options = {"A", "B", "C"},
-    Default = "A",
-    Callback = function(option)
-        print("Selecionado:", option)
-    end
+  Name = "Selecionar Jogador",
+  Options = {"Opção 1", "Opção 2", "Opção 3"},
+  Default = {"Opção 1"},
+  MultSelect = false,
+  Callback = function(Value)
+    print("Você escolheu: " .. Value)
+  end
 })
 ```
 
 ### Slider
 ```lua
 local Slider = Tab:AddSlider({
-    Name = "Volume",
-    Min = 0,
-    Max = 100,
-    Default = 50,
-    Callback = function(value)
-        print("Volume:", value)
-    end
+  Name = "Slider",
+  MinValue = 1,
+  MaxValue = 10,
+  Default = 5,
+  Increase = 1,
+  Callback = function(Value)
+    print("Valor ajustado para: " .. Value)
+  end
 })
 ```
 
